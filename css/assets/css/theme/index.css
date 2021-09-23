@@ -1,0 +1,973 @@
+/* BODY */
+
+body {
+  background: #111;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
+/* Main styles */
+.text {
+  fill: none;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-dasharray: 70 330;
+  stroke-dashoffset: 0;
+  -webkit-animation: stroke 6s infinite linear;
+  animation: stroke 6s infinite linear;
+}
+.text:nth-child(5n + 1) {
+  stroke: #f2385a;
+  -webkit-animation-delay: -1.2s;
+  animation-delay: -1.2s;
+}
+.text:nth-child(5n + 2) {
+  stroke: #f5a503;
+  -webkit-animation-delay: -2.4s;
+  animation-delay: -2.4s;
+}
+.text:nth-child(5n + 3) {
+  stroke: #e9f1df;
+  -webkit-animation-delay: -3.6s;
+  animation-delay: -3.6s;
+}
+.text:nth-child(5n + 4) {
+  stroke: #56d9cd;
+  -webkit-animation-delay: -4.8s;
+  animation-delay: -4.8s;
+}
+.text:nth-child(5n + 5) {
+  stroke: #3aa1bf;
+  -webkit-animation-delay: -6s;
+  animation-delay: -6s;
+}
+@-webkit-keyframes stroke {
+  100% {
+    stroke-dashoffset: -400;
+  }
+}
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: -400;
+  }
+}
+/* Other styles */
+html,
+body {
+  height: 100%;
+}
+body {
+  background: #111;
+  background-size: 0.2em 100%;
+  font: 5em Open Sans, Impact;
+  text-transform: uppercase;
+  margin: 0;
+}
+svg {
+  position: center;
+  width: 50%;
+  height: 80%;
+}
+
+section img {
+  position: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+section h1 {
+  position: absolute;
+  color: #fff;
+  font-size: 12em;
+}
+
+/* --------------------------------- */
+
+/* LOADER */
+
+.loader_screen {
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #0a0a0a;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  --path: #ffffff;
+  --dot: #5628ee;
+  --duration: 3s;
+  width: 44px;
+  height: 44px;
+  position: relative;
+  transform: scale(1.5);
+}
+
+.loader svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.loader svg rect {
+  fill: none;
+  stroke: var(--path);
+  stroke-width: 10px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.loader svg rect {
+  stroke-dasharray: 192 64 192 64;
+  stroke-dashoffset: 0;
+  -webkit-animation: pathRect 3s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+  animation: pathRect 3s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+}
+
+@-webkit-keyframes pathRect {
+  25% {
+    stroke-dashoffset: 64;
+  }
+  50% {
+    stroke-dashoffset: 128;
+  }
+  75% {
+    stroke-dashoffset: 192;
+  }
+  100% {
+    stroke-dashoffset: 256;
+  }
+}
+
+@keyframes pathRect {
+  25% {
+    stroke-dashoffset: 64;
+  }
+  50% {
+    stroke-dashoffset: 128;
+  }
+  75% {
+    stroke-dashoffset: 192;
+  }
+  100% {
+    stroke-dashoffset: 256;
+  }
+}
+
+/* --------------------------------- */
+
+/* SECTIONS BAR */
+
+.scrollspy_bar {
+  position: fixed;
+  top: 50px;
+  bottom: 50px;
+  left: 20px;
+  padding: 30px 0;
+  width: 90px;
+  z-index: 99;
+}
+
+.scrollspy_bar::before {
+  position: absolute;
+  content: "";
+  width: 2px;
+  background: #0c0c0c;
+  top: 0;
+  bottom: 0;
+  left: 30px;
+}
+
+.scrollspy_bar li {
+  cursor: pointer;
+  position: relative;
+}
+
+.scrollspy_bar .small_group {
+  position: absolute;
+}
+
+.scrollspy_bar .small_point {
+  position: relative;
+  left: 29px;
+  width: 4px;
+  height: 4px;
+  background: #666;
+  border-radius: 50%;
+  transition: all 0.25s;
+}
+
+.scrollspy_bar .small_point.active {
+  background: var(--co-1);
+}
+
+.scrollspy_bar .small_point:not(:first-child) {
+  margin-top: 10px;
+}
+
+.scrollspy_bar span {
+  color: #666;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.scrollspy_bar .active span {
+  color: #fff;
+}
+
+.scrollspy_bar .num {
+  position: relative;
+  left: 45px;
+  transition: all 0.25s;
+}
+
+.scrollspy_bar .active .num {
+  left: 0;
+}
+
+.scrollspy_bar .dot {
+  position: absolute;
+  left: 29px;
+  width: 4px;
+  height: 4px;
+  background: #666;
+  border-radius: 50%;
+}
+
+.scrollspy_bar .active .dot {
+  background: var(--co-1);
+}
+
+.scrollspy_bar .name {
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
+  left: 25px;
+  white-space: nowrap;
+  transition: all 0.25s;
+}
+
+.scrollspy_bar .active .name {
+  visibility: visible;
+  opacity: 1;
+  left: 30px;
+}
+
+@media (max-width: 1365.98px) {
+  .scrollspy_bar {
+    display: none;
+  }
+}
+
+/* --------------------------------- */
+
+/* MAIN */
+
+@media (min-width: 1366px) {
+  main {
+    max-width: calc(100% - 50px);
+  }
+}
+
+/* --------------------------------- */
+
+/* HOME SECTION */
+
+.home_se {
+  z-index: 2;
+  background-size: cover;
+}
+
+/* text */
+
+.home_se .text {
+  padding: 150px 0 100px;
+}
+
+.home_se h1 {
+  font-size: 100px;
+  color: #fff;
+  font-weight: 900;
+  font-family: "GT-Walsheim", "Poppins", sans-serif;
+  line-height: 1.1;
+}
+
+@media (max-width: 991.98px) {
+  .home_se h1 {
+    font-size: 50px;
+    text-transform: uppercase;
+  }
+}
+
+/* --------------------------------- */
+
+/* SECTION I */
+
+.se_i {
+  border-top: 2px solid #0c0c0c;
+  border-bottom: 2px solid #0c0c0c;
+}
+
+/* box */
+
+.se_i .box h4 {
+  font-size: 32px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.se_i .box p {
+  font-size: 16px;
+  color: #999;
+  line-height: 2;
+}
+
+@media (max-width: 767.98px) {
+  .se_i .box h4 {
+    font-size: 26px;
+  }
+}
+
+/* --------------------------------- */
+
+/* SECTION II */
+
+.se_ii .text {
+  padding: 150px 0;
+}
+
+.se_ii .text p {
+  font-size: 18px;
+  color: #999;
+  line-height: 2.2;
+}
+
+/* bar */
+
+.se_ii .links_cont .bar {
+  height: 2px;
+  width: 60px;
+  background: #666;
+}
+
+/* social links */
+
+.se_ii .links_cont .social_links a {
+  font-size: 20px;
+  color: #fff;
+  transition: all 0.25s;
+}
+
+.se_ii .links_cont .social_links a:hover {
+  color: var(--co-1);
+}
+
+@media (max-width: 991.98px) {
+  .se_ii {
+    background-image: unset !important;
+    background-color: #0a0a0a;
+  }
+  .se_ii .text h2 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .se_ii .text {
+    padding: 120px 0;
+  }
+}
+
+/* --------------------------------- */
+
+/* SECTION III - SERVICES SECTION */
+
+/* box */
+
+.se_iii .box {
+  padding: 60px 40px;
+  border-radius: 16px;
+  background: #0a0a0a;
+}
+
+/* icon */
+
+.se_iii .box .icon {
+  width: 60px;
+}
+
+/* title */
+
+.se_iii .box .title {
+  font-size: 24px;
+  color: rgb(16, 50, 202);
+  font-weight: 600;
+  font-family: "GT-Walsheim", "Poppins", sans-serif;
+}
+
+.se_iii .box p {
+  font-size: 15px;
+  color: rgb(83, 169, 219);
+  line-height: 2;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* .se_iii .box p:hover {
+  -webkit-line-clamp: 10;
+} */
+
+/* --------------------------------- */
+
+/* SECTION IV - TESTIMONIALS SECTION */
+
+/* slider */
+
+.se_iv .slick-list {
+  margin: 0 -10px;
+}
+
+.se_iv .slick-slide {
+  margin: 0 10px;
+}
+
+/* item */
+
+.se_iv .item {
+  outline: none;
+  padding: 40px 30px 30px;
+  background: #0a0a0a url(./../../images/icons/writer.svg) no-repeat;
+  background-size: 40px;
+  background-position: 20px 20px;
+  border: 1px solid #000;
+  border-radius: 16px;
+}
+
+/* text */
+
+.se_iv .item_text {
+  font-size: 16px;
+  color: #999;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.8;
+}
+
+/* avatar */
+
+.se_iv .item .item_avatar {
+  width: 52px;
+  border-radius: 50%;
+}
+
+/* name & url */
+
+.se_iv .item .user_name {
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* job */
+
+.se_iv .item .user_job {
+  font-size: 14px;
+  color: #999;
+}
+
+/* slider dots */
+
+.se_iv .slider_dots ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.se_iv .slider_dots li {
+  margin: 0 8px;
+}
+
+.se_iv .slider_dots li button {
+  text-indent: 100px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  overflow: hidden;
+  opacity: 0.3;
+  transition: all 0.25s;
+}
+
+.se_iv .slider_dots li.slick-active button {
+  opacity: 1;
+  background: var(--co-1);
+}
+
+/* --------------------------------- */
+
+/* SECTION V - PRICING */
+
+/* plan */
+
+.se_v .plan {
+  background: #0c0c0c;
+  padding: 80px 30px;
+  border-radius: 16px;
+}
+
+/* name */
+
+.se_v .plan .name {
+  font-size: 24px;
+  color: #666;
+  font-weight: 300;
+  font-family: "GT-Walsheim", "Poppins", sans-serif;
+}
+
+/* price */
+
+.se_v .plan .price {
+  display: table;
+  font-size: 42px;
+  color: #fff;
+  font-weight: 600;
+  line-height: 1.2;
+  font-family: "GT-Walsheim", "Poppins", sans-serif;
+}
+
+.se_v .plan .price .dollar_sign {
+  font-size: 30px;
+  top: -4px;
+}
+
+.se_v .plan .price .duration {
+  font-size: 14px;
+  color: #666;
+  font-weight: 300;
+}
+
+/* features */
+
+.se_v .plan .features li {
+  font-size: 16px;
+  color: #666;
+}
+
+.se_v .plan .features li:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+/* --------------------------------- */
+
+/* SECTION VI */
+
+/* box */
+
+.se_vi .gallery .gallery_box {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background-size: cover !important;
+}
+
+.se_vi .gallery .gallery_box::before {
+  position: absolute;
+  content: "";
+  left: -10px;
+  top: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9;
+  opacity: 0;
+  border-radius: 20px;
+  transition: all 0.25s;
+}
+
+.se_vi .gallery .gallery_box:hover::before {
+  left: 10px;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  opacity: 0.6;
+}
+
+/* scale button */
+
+.se_vi .gallery .scale_btn {
+  position: relative;
+  background: #fff;
+  padding: 15px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: var(--co-4);
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(1.2);
+  transition: all 0.25s;
+}
+
+.se_vi .gallery .scale_btn:hover {
+  color: #fff;
+  background: var(--co-4);
+}
+
+.se_vi .gallery .gallery_box:hover .scale_btn {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* larg box */
+
+.se_vi .lg_box {
+  height: 400px;
+}
+
+/* small box */
+
+.se_vi .sm_box {
+  height: 185px;
+}
+
+/* --------------------------------- */
+
+/* SECTION VII */
+
+/* item */
+
+.se_vii .item {
+  padding: 20px 30px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 26px;
+}
+
+.se_vii .item img {
+  width: 40px;
+  margin-bottom: 10px;
+}
+
+.se_vii .item p {
+  color: #fff;
+  font-weight: 900;
+  font-size: 16px;
+  font-family: "GT-Walsheim", "Poppins", sans-serif;
+}
+
+/* item color classes */
+
+.se_vii .item_1 {
+  background: rgba(0, 118, 157, 0.1);
+}
+
+.se_vii .item_2 {
+  background: rgba(255, 193, 7, 0.1);
+}
+
+.se_vii .item_3 {
+  background: rgba(115, 160, 251, 0.1);
+}
+
+.se_vii .item_4 {
+  background: rgba(93, 64, 55, 0.1);
+}
+
+.se_vii .item_5 {
+  background: rgba(241, 101, 40, 0.1);
+}
+
+.se_vii .item_6 {
+  background: rgba(255, 70, 140, 0.1);
+}
+
+.se_vii .item_7 {
+  background: rgba(248, 217, 255, 0.2);
+}
+
+/* group */
+
+.se_vii .timeline .group:not(:last-child) {
+  margin-bottom: 60px;
+}
+
+/* year */
+
+.se_vii .timeline .year {
+  min-width: 75px;
+  font-weight: bold;
+  color: var(--co-1);
+  padding: 7px 15px;
+  border-radius: 8px;
+  background: #0a0a0a;
+  font-family: "GT-Walsheim", "Poppins", sans-serif;
+}
+
+/* job box */
+
+.se_vii .timeline .job_box:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.se_vii .timeline .job_box .title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "GT-Walsheim", "Poppins", sans-serif;
+}
+
+.se_vii .timeline .job_box .location {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray);
+}
+
+@media (max-width: 1199.98px) {
+  /* item */
+  .se_vii .item {
+    padding: 30px;
+    width: 100%;
+    height: unset;
+  }
+  .se_vii .item img {
+    width: 70px;
+    margin-bottom: 15px;
+  }
+  .se_vii .item p {
+    font-size: 20px;
+  }
+  /* job box */
+  .se_vii .timeline .job_box {
+    padding: 20px;
+    border: 1px solid var(--co-4);
+    background: #0a0a0a;
+    border-radius: 16px;
+  }
+  .se_vii .timeline .job_box:not(:last-child) {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  /* item */
+  .se_vii .item img {
+    width: 50px;
+  }
+}
+
+/* --------------------------------- */
+
+/* SECTION VIII */
+
+/* label */
+
+.se_viii .contact_form label:not(.user_label) {
+  cursor: pointer;
+  position: relative;
+}
+
+.se_viii .contact_form label:not(.user_label) input {
+  display: none;
+}
+
+.se_viii .contact_form label:not(.user_label) i {
+  transform: scale(0);
+  margin-right: 0;
+  color: #fff;
+  font-size: 18px;
+  left: 30px;
+  width: 0;
+  transition: all 0.25s;
+}
+
+.se_viii .contact_form label:not(.user_label) input:checked + span i {
+  transform: scale(1);
+  width: 30px;
+}
+
+.se_viii .contact_form label:not(.user_label) span {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 15px 30px;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  transition: all 0.25s;
+  font-family: "GT-Walsheim", "Poppins", sans-serif;
+}
+
+.se_viii .contact_form label:not(.user_label) input:checked + span {
+  background: var(--co-1);
+  color: #fff;
+  border-color: var(--co-1);
+}
+
+.se_viii .contact_form .title {
+  color: #fff;
+  font-weight: 900;
+}
+
+/* user label */
+
+.se_viii .contact_form .user_label input {
+  background: #0c0c0c;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  outline: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 20px;
+  transition: all 0.25s;
+}
+
+.se_viii .contact_form .user_label input::-webkit-input-placeholder {
+  color: #666;
+}
+
+.se_viii .contact_form .user_label input::-moz-placeholder {
+  color: #666;
+}
+
+.se_viii .contact_form .user_label input:-ms-input-placeholder {
+  color: #666;
+}
+
+.se_viii .contact_form .user_label input::-ms-input-placeholder {
+  color: #666;
+}
+
+.se_viii .contact_form .user_label input::placeholder {
+  color: #666;
+}
+
+.se_viii .contact_form .user_label input:focus {
+  border-color: #555;
+}
+
+/* social list */
+
+.se_viii .contact_form .social_list a {
+  font-size: 30px;
+  color: #555;
+  transition: all 0.25s;
+}
+
+.se_viii .contact_form .social_list a:hover {
+  color: #fff;
+}
+
+/* --------------------------------- */
+
+/* GALLERY MODAL */
+
+.gallery_modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 150px 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 98;
+  overflow-y: auto;
+}
+
+.gallery_modal::-webkit-scrollbar {
+  width: 4px;
+}
+
+.gallery_modal::-webkit-scrollbar-thumb {
+  background: var(--co-1);
+}
+
+/* dismiss button */
+
+.gallery_modal .dismiss_btn {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  background: transparent;
+  padding: 0;
+  color: #fff;
+  height: 48px;
+  width: 48px;
+  border: 2px solid #fff;
+  font-size: 20px;
+  border-radius: 50%;
+  transition: all 0.25s;
+}
+
+.gallery_modal .dismiss_btn:hover {
+  background: #fff;
+  color: var(--co-4);
+}
+
+/* box */
+
+.gallery_modal .box {
+  max-width: 800px;
+}
+
+/* title */
+
+.gallery_modal .title {
+  font-size: 36px;
+  font-weight: 900;
+  color: #fff;
+  font-family: "GT-Walsheim", "Poppins", sans-serif;
+}
+
+/* description */
+
+.gallery_modal .des {
+  font-size: 17px;
+  color: #999;
+}
+
+/* image */
+
+.gallery_modal img {
+  border-radius: 20px;
+}
+
+@media (max-width: 991.98px) {
+  .gallery_modal .dismiss_btn {
+    top: 20px;
+    right: 29px;
+  }
+}
